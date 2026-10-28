@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guida Didattica & Simulatore Cloze: La Cella</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .tab-btn.active {
+            border-bottom-color: #3b82f6;
+            color: #2563eb;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Header / Navbar -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-3">
+                    <div class="bg-blue-600 text-white p-2 rounded-lg shadow-sm">
+                        <i data-lucide="book-open-check" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h1 class="font-bold text-lg text-slate-900 leading-tight">Didattica Cloze</h1>
+                        <p class="text-xs text-slate-500">Focus Tema: La Cella Biologica</p>
+                    </div>
+                </div>
+                <nav class="flex space-x-1 sm:space-x-4">
+                    <button id="nav-info" onclick="switchTab('info')" class="tab-btn active px-3 py-2 text-sm font-medium border-b-2 border-transparent hover:text-blue-600 transition-colors flex items-center gap-2">
+                        <i data-lucide="info" class="w-4 h-4"></i>
+                        <span>Scheda Metodologica</span>
+                    </button>
+                    <button id="nav-sim" onclick="switchTab('sim')" class="tab-btn px-3 py-2 text-sm font-medium border-b-2 border-transparent text-slate-500 hover:text-blue-600 transition-colors flex items-center gap-2">
+                        <i data-lucide="gamepad-2" class="w-4 h-4"></i>
+                        <span>Simulatore Esercizi</span>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- SECTION 1: SCHEDA DIDATTICA / METODOLOGICA -->
+        <div id="section-info" class="space-y-8">
+            <!-- Hero banner -->
+            <div class="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl p-6 sm:p-8 text-white shadow-xl relative overflow-hidden">
+                <div class="relative z-10 max-w-2xl">
+                    <span class="inline-block px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs font-semibold uppercase tracking-wider mb-3">Strumento Per Docenti e Studenti</span>
+                    <h2 class="text-2xl sm:text-3xl font-bold mb-3">Il Test Cloze come Strategia di Apprendimento</h2>
+                    <p class="text-blue-100 text-sm sm:text-base leading-relaxed">
+                        Il test Cloze consiste nell'inserire parole mancanti in un testo. Non misura solo la memoria verbale, ma promuove la capacità di inferenza contestuale e l'analisi morfosintattica.
+                    </p>
+                </div>
+                <i data-lucide="brain-circuit" class="absolute right-4 -bottom-6 w-64 h-64 text-white/10 pointer-events-none"></i>
+            </div>
+
+            <!-- Prerequisiti e Obiettivi Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Prerequisiti -->
+                <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-10 h-10 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center mb-4">
+                        <i data-lucide="list-checks" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-lg mb-3">2. Prerequisiti</h3>
+                    <ul class="space-y-2 text-sm text-slate-600">
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check" class="w-4 h-4 text-amber-600 shrink-0 mt-0.5"></i>
+                            <span>Capacità di comprensione del testo</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check" class="w-4 h-4 text-amber-600 shrink-0 mt-0.5"></i>
+                            <span>Capacità di lettura scorrevole</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check" class="w-4 h-4 text-amber-600 shrink-0 mt-0.5"></i>
+                            <span>Conoscenza di base della lingua del cloze</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Obiettivo Principale -->
+                <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center mb-4">
+                        <i data-lucide="target" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-lg mb-3">3. Obiettivo Principale</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Acquisizione e consolidamento del <strong class="text-slate-800">lessico specifico</strong> relativo a un determinato argomento disciplinare (es. la biologia della cellula).
+                    </p>
+                </div>
+
+                <!-- Obiettivi Secondari -->
+                <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-10 h-10 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center mb-4">
+                        <i data-lucide="puzzle" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-lg mb-3">4. Obiettivi Secondari</h3>
+                    <ul class="space-y-2 text-sm text-slate-600">
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="arrow-right" class="w-4 h-4 text-indigo-600 shrink-0 mt-0.5"></i>
+                            <span>Consolidamento delle strutture morfosintattiche.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="arrow-right" class="w-4 h-4 text-indigo-600 shrink-0 mt-0.5"></i>
+                            <span>Sviluppo di capacità strategiche di pianificazione e *problem solving* (uso del contesto per arguire termini sconosciuti).</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Calibrazione della Difficoltà & Tipologie -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Calibrazione -->
+                <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+                    <h3 class="font-bold text-slate-900 text-lg mb-4 flex items-center gap-2">
+                        <i data-lucide="sliders" class="w-5 h-5 text-blue-600"></i>
+                        5. Modalità per Calibrare la Difficoltà
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="p-3 bg-slate-50 rounded-lg border border-slate-100 text-sm">
+                            <strong class="text-slate-800">Lunghezza frasi e parole:</strong> Frasi più brevi e lineari riducono il carico cognitivo.
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-lg border border-slate-100 text-sm">
+                            <strong class="text-slate-800">Frequenza del lessico:</strong> Uso di parole ad alta disponibilità quotidiana vs termini tecnici settoriali.
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-lg border border-slate-100 text-sm">
+                            <strong class="text-slate-800">Densità dei buchi:</strong> Aumentare o diminuire la distanza tra gli omessi.
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-lg border border-slate-100 text-sm">
+                            <strong class="text-slate-800">Indizi visivi o grafici:</strong> Inserimento della prima lettera o di immagini esplicative.
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-lg border border-slate-100 text-sm">
+                            <strong class="text-slate-800">Scelta & Distrattori:</strong> Fornire o meno la lista delle opzioni e aggiungere parole "intruse" (distrattori).
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tipologie di Cloze -->
+                <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+                    <h3 class="font-bold text-slate-900 text-lg mb-4 flex items-center gap-2">
+                        <i data-lucide="layers" class="w-5 h-5 text-blue-600"></i>
+                        6. Tipologie di Esercizio Supportate
+                    </h3>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-center p-3 rounded-lg bg-blue-50/50 text-blue-900 border border-blue-100">
+                            <i data-lucide="circle-dot" class="w-4 h-4 text-blue-600 mr-3"></i>
+                            <strong>Cloze a scelta multipla:</strong> Selezione da un menu a tendina per ciascuna lacuna.
+                        </li>
+                        <li class="flex items-center p-3 rounded-lg bg-purple-50/50 text-purple-900 border border-purple-100">
+                            <i data-lucide="image" class="w-4 h-4 text-purple-600 mr-3"></i>
+                            <strong>Cloze con indizi visivi:</strong> Schemi illustrativi di supporto alla compilazione.
+                        </li>
+                        <li class="flex items-center p-3 rounded-lg bg-amber-50/50 text-amber-900 border border-amber-100">
+                            <i data-lucide="spell-check" class="w-4 h-4 text-amber-600 mr-3"></i>
+                            <strong>Cloze con iniziale come indizio:</strong> La prima lettera guida l'alunno nella scrittura.
+                        </li>
+                        <li class="flex items-center p-3 rounded-lg bg-rose-50/50 text-rose-900 border border-rose-100">
+                            <i data-lucide="alert-triangle" class="w-4 h-4 text-rose-600 mr-3"></i>
+                            <strong>Cloze con distrattori:</strong> Inserimento di opzioni extra errate nella banca parole.
+                        </li>
+                        <li class="flex items-center p-3 rounded-lg bg-emerald-50/50 text-emerald-900 border border-emerald-100">
+                            <i data-lucide="file-text" class="w-4 h-4 text-emerald-600 mr-3"></i>
+                            <strong>Cloze con testo di riferimento annesso:</strong> Il testo integrato contiene le risposte.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 2: SIMULATORE INTERATTIVO -->
+        <div id="section-sim" class="hidden space-y-6">
+
+            <!-- Modalità Selector -->
+            <div class="bg-white rounded-xl p-4 border border-slate-200 shadow-sm flex flex-col md:flex-row gap-4 items-center justify-between">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Seleziona Tipologia di Cloze</label>
+                    <select id="type-select" onchange="loadExercise()" class="bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 font-medium">
+                        <option value="scelta_multipla">1. Cloze a scelta multipla</option>
+                        <option value="immagini">2. Cloze con indizi visivi (Immagini)</option>
+                        <option value="iniziale">3. Cloze con iniziale della parola</option>
+                        <option value="distrattori">4. Cloze con distrattori (Banca parole)</option>
+                        <option value="testo_annesso">5. Cloze con testo di riferimento annesso</option>
+                    </select>
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="resetExercise()" class="px-4 py-2 text-sm font-medium text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors flex items-center gap-1.5">
+                        <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+                        <span>Riavvia</span>
+                    </button>
+                    <button onclick="checkAnswers()" class="px-5 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow-sm transition-colors flex items-center gap-1.5">
+                        <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+                        <span>Verifica Risposte</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Dynamic Exercise Box -->
+            <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6 sm:p-8">
+                <!-- Title & Description of Current Mode -->
+                <div id="exercise-header" class="mb-6 pb-4 border-b border-slate-100">
+                    <h2 id="ex-title" class="text-xl font-bold text-slate-900"></h2>
+                    <p id="ex-desc" class="text-sm text-slate-600 mt-1"></p>
+                </div>
+
+                <!-- Main Layout Container (Handles side-by-side text/images if needed) -->
+                <div id="exercise-content-layout" class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                    
+                    <!-- Side panel (Reference Text or Image Diagram) -->
+                    <div id="side-panel" class="hidden lg:col-span-5 bg-slate-50 p-5 rounded-xl border border-slate-200">
+                        <!-- Dynamic side content injected here -->
+                    </div>
+
+                    <!-- Interactive Text Box -->
+                    <div id="text-panel" class="lg:col-span-12 space-y-6">
+                        <div id="word-bank-container" class="hidden mb-4 p-4 bg-amber-50 border border-amber-200 rounded-xl">
+                            <span class="text-xs font-semibold text-amber-800 uppercase tracking-wider block mb-2">Banca Parole (Trascrivi o consulta):</span>
+                            <div id="word-bank" class="flex flex-wrap gap-2"></div>
+                        </div>
+
+                        <div id="cloze-text" class="text-base sm:text-lg leading-relaxed text-slate-800 font-normal space-y-4">
+                            <!-- Text with inputs injected here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Result & Feedback Box -->
+                <div id="feedback-box" class="hidden mt-8 p-6 rounded-xl border">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div id="feedback-icon"></div>
+                        <h3 id="feedback-title" class="font-bold text-lg"></h3>
+                    </div>
+                    <p id="feedback-detail" class="text-sm text-slate-600 mt-1"></p>
+                    
+                    <!-- Pedagogical hint -->
+                    <div id="pedagogical-tip" class="mt-4 pt-3 border-t border-slate-200/60 text-xs text-slate-500 italic flex items-start gap-2">
+                        <i data-lucide="lightbulb" class="w-4 h-4 text-amber-500 shrink-0 mt-0.5"></i>
+                        <span id="tip-text"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-6 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs text-slate-500">
+            <p>App Didattica Cloze - Strumento di supporto all'apprendimento linguistico e scientifico.</p>
+        </div>
+    </footer>
+
+    <!-- Application Logic -->
+    <script>
+        // Exercise Data Sets (Focus: La Cella)
+        const exercises = {
+            scelta_multipla: {
+                title: "Cloze a Scelta Multipla",
+                desc: "Seleziona dal menu a tendina la parola più corretta in base al contesto morfosintattico e semantico.",
+                pedagogy: "Questa tipologia riduce lo sforzo mnemonico fornendo un insieme chiuso di opzioni tra cui identificare la risposta corretta.",
+                hasSidePanel: false,
+                template: [
+                    { type: "text", content: "La cella è l'unità " },
+                    { type: "select", id: "gap1", answer: "fondamentale", options: ["fondamentale", "secondaria", "invisibile"] },
+                    { type: "text", content: " di tutti gli organismi viventi. Essa è delimitata da una " },
+                    { type: "select", id: "gap2", answer: "membrana", options: ["membrana", "parete", "capsula"] },
+                    { type: "text", content: " plasmatica che regola il passaggio delle sostanze. All'interno si trova il " },
+                    { type: "select", id: "gap3", answer: "citoplasma", options: ["citoplasma", "nucleolo", "vacuolo"] },
+                    { type: "text", content: ", un fluido gelatinoso in cui si trovano immersi i vari organelli." }
+                ]
+            },
+            immagini: {
+                title: "Cloze con Indizi Visivi (Immagini)",
+                desc: "Usa l'immagine dello schema della cella per dedurre ed inserire i nomi degli organelli indicati.",
+                pedagogy: "L'abbinamento di indizi visivi e testo supporta gli studenti con stili di apprendimento visivo o bisogni educativi speciali.",
+                hasSidePanel: true,
+                sideType: "image",
+                template: [
+                    { type: "text", content: "Nel modello cellulare osservato nell'immagine, il grande organello centrale che racchiude il materiale genetico (DNA) si chiama " },
+                    { type: "input", id: "gap1", answer: "nucleo" },
+                    { type: "text", content: ". Le strutture responsabili della produzione di energia (respirazione cellulare) sono i " },
+                    { type: "input", id: "gap2", answer: "mitocondri" },
+                    { type: "text", content: ". Infine, la barriera sottile esterna che racchiude l'intera cella è la " },
+                    { type: "input", id: "gap3", answer: "membrana" },
+                    { type: "text", content: "." }
+                ]
+            },
+            iniziale: {
+                title: "Cloze con Iniziale della Parola",
+                desc: "Scrivi la parola mancante sfruttando la prima lettera fornita come indizio grafico.",
+                pedagogy: "Fornire l'iniziale riduce il campo delle ipotesi lessicali, aiutando il recupero fonetico e ortografico dal memoria.",
+                hasSidePanel: false,
+                template: [
+                    { type: "text", content: "Tutte le cellule contengono la mappa genetica scritta nel " },
+                    { type: "hint_input", id: "gap1", hint: "D...", answer: "DNA" },
+                    { type: "text", content: ". Nelle cellule procariote esso galleggia libero, mentre nelle cellule " },
+                    { type: "hint_input", id: "gap2", hint: "e...", answer: "eucariote" },
+                    { type: "text", content: " è racchiuso da una membrana nucleare. La sintesi delle proteine avviene nei " },
+                    { type: "hint_input", id: "gap3", hint: "r...", answer: "ribosomi" },
+                    { type: "text", content: "." }
+                ]
+            },
+            distrattori: {
+                title: "Cloze con Distrattori (Banca Parole)",
+                desc: "Inserisci le parole corrette scegliendole dal riquadro in alto. Attenzione: ci sono due parole intruse (distrattori)!",
+                pedagogy: "I distrattori aumentano la difficoltà richiesta nel recupero lessicale, costringendo ad un'analisi contestuale più profonda.",
+                hasSidePanel: false,
+                wordBank: ["parete", "cloroplasti", "fotosintesi", "nucleo", "flagello", "energia"], // 'nucleo' and 'flagello' are distractors here
+                template: [
+                    { type: "text", content: "La cella vegetale si distingue da quella animale per alcune strutture specifiche. All'esterno possiede una rigida " },
+                    { type: "input", id: "gap1", answer: "parete" },
+                    { type: "text", content: " cellulare. Inoltre contiene i " },
+                    { type: "input", id: "gap2", answer: "cloroplasti" },
+                    { type: "text", content: ", organelli verdi nei quali avviene il processo di " },
+                    { type: "input", id: "gap3", answer: "fotosintesi" },
+                    { type: "text", content: " per produrre sostanze nutritive e " },
+                    { type: "input", id: "gap4", answer: "energia" },
+                    { type: "text", content: "." }
+                ]
+            },
+            testo_annesso: {
+                title: "Cloze con Testo di Riferimento Annesso",
+                desc: "Leggi attentamente il testo informativo nella colonna di sinistra e completa il riassunto a destra.",
+                pedagogy: "Sviluppa le capacità di lettura selettiva, ricerca di informazioni specifiche e rielaborazione contestuale.",
+                hasSidePanel: true,
+                sideType: "referenceText",
+                referenceTitle: "Scheda Informativa: I Mitocondri",
+                referenceContent: "I mitocondri sono centrali energetiche della cellula eucariota. Svolgono la respirazione cellulare, un processo che consuma ossigeno e glucosio per produrre molecole di ATP, ovvero l'energia usata per tutte le attività cellulari.",
+                template: [
+                    { type: "text", content: "I mitocondri svolgono la funzione di " },
+                    { type: "input", id: "gap1", answer: "centrali" },
+                    { type: "text", content: " energetiche della cellula. Durante la respirazione cellulare essi consumano " },
+                    { type: "input", id: "gap2", answer: "ossigeno" },
+                    { type: "text", content: " e glucosio con lo scopo di produrre molecole di " },
+                    { type: "input", id: "gap3", answer: "ATP" },
+                    { type: "text", content: "." }
+                ]
+            }
+        };
+
+        let currentType = 'scelta_multipla';
+
+        // Navigation Switcher
+        function switchTab(tab) {
+            document.getElementById('section-info').classList.add('hidden');
+            document.getElementById('section-sim').classList.add('hidden');
+            document.getElementById('nav-info').classList.remove('active');
+            document.getElementById('nav-sim').classList.remove('active');
+
+            if (tab === 'info') {
+                document.getElementById('section-info').classList.remove('hidden');
+                document.getElementById('nav-info').classList.add('active');
+            } else {
+                document.getElementById('section-sim').classList.remove('hidden');
+                document.getElementById('nav-sim').classList.add('active');
+                loadExercise();
+            }
+        }
+
+        // Render Current Exercise
+        function loadExercise() {
+            currentType = document.getElementById('type-select').value;
+            const data = exercises[currentType];
+
+            // Set Header
+            document.getElementById('ex-title').innerText = data.title;
+            document.getElementById('ex-desc').innerText = data.desc;
+            document.getElementById('tip-text').innerText = data.pedagogy;
+
+            // Reset Feedback
+            document.getElementById('feedback-box').classList.add('hidden');
+
+            // Handle Layout & Side Panel
+            const layout = document.getElementById('exercise-content-layout');
+            const sidePanel = document.getElementById('side-panel');
+            const textPanel = document.getElementById('text-panel');
+            const wordBankContainer = document.getElementById('word-bank-container');
+
+            if (data.hasSidePanel) {
+                sidePanel.classList.remove('hidden');
+                textPanel.classList.remove('lg:col-span-12');
+                textPanel.classList.add('lg:col-span-7');
+
+                if (data.sideType === 'image') {
+                    sidePanel.innerHTML = `
+                        <h4 class="font-bold text-slate-800 text-sm mb-3">Diagramma di Riferimento:</h4>
+                        <div class="bg-white p-4 rounded-lg border border-slate-200 flex flex-col items-center">
+                            <svg viewBox="0 0 200 160" class="w-full h-auto max-w-[220px]">
+                                <!-- Cell Wall / Membrane -->
+                                <ellipse cx="100" cy="80" rx="90" ry="70" fill="#e0f2fe" stroke="#0284c7" stroke-width="3" />
+                                <!-- Nucleus -->
+                                <circle cx="80" cy="75" r="28" fill="#fef08a" stroke="#ca8a04" stroke-width="2" />
+                                <text x="80" y="79" font-size="10" font-weight="bold" text-anchor="middle" fill="#854d0e">Nucleo</text>
+                                <!-- Mitochondria -->
+                                <ellipse cx="145" cy="60" rx="16" ry="8" fill="#fecdd3" stroke="#e11d48" stroke-width="2" transform="rotate(-15 145 60)" />
+                                <text x="145" y="80" font-size="8" text-anchor="middle" fill="#9f1239">Mitocondri</text>
+                                <!-- Cytoplasm label -->
+                                <text x="45" y="120" font-size="9" font-style="italic" fill="#0369a1">Membrana</text>
+                                <path d="M 45 110 L 20 90" stroke="#0369a1" stroke-width="1" stroke-dasharray="2" />
+                            </svg>
+                            <span class="text-xs text-slate-500 mt-2 italic text-center">Schema semplificato di cella biologica</span>
+                        </div>
+                    `;
+                } else if (data.sideType === 'referenceText') {
+                    sidePanel.innerHTML = `
+                        <h4 class="font-bold text-slate-800 text-sm mb-2 flex items-center gap-2">
+                            <i data-lucide="book-open" class="w-4 h-4 text-blue-600"></i>
+                            ${data.referenceTitle}
+                        </h4>
+                        <p class="text-sm text-slate-600 leading-relaxed bg-white p-4 rounded-lg border border-slate-200">
+                            "${data.referenceContent}"
+                        </p>
+                    `;
+                }
+            } else {
+                sidePanel.classList.add('hidden');
+                textPanel.classList.remove('lg:col-span-7');
+                textPanel.classList.add('lg:col-span-12');
+            }
+
+            // Word Bank Rendering
+            if (data.wordBank) {
+                wordBankContainer.classList.remove('hidden');
+                const wb = document.getElementById('word-bank');
+                wb.innerHTML = '';
+                // Shuffle array for challenge
+                const shuffled = [...data.wordBank].sort(() => Math.random() - 0.5);
+                shuffled.forEach(w => {
+                    wb.innerHTML += `<span class="px-3 py-1 bg-white border border-amber-300 font-medium text-amber-900 text-xs rounded-full shadow-sm">${w}</span>`;
+                });
+            } else {
+                wordBankContainer.classList.add('hidden');
+            }
+
+            // Render Cloze Text Component
+            const container = document.getElementById('cloze-text');
+            container.innerHTML = '';
+
+            data.template.forEach(item => {
+                if (item.type === 'text') {
+                    container.appendChild(document.createTextNode(item.content));
+                } else if (item.type === 'select') {
+                    const select = document.createElement('select');
+                    select.id = item.id;
+                    select.dataset.answer = item.answer;
+                    select.className = "bg-white border border-slate-300 text-blue-700 text-sm rounded-md px-2 py-1 mx-1 font-semibold focus:ring-2 focus:ring-blue-500 inline-block shadow-sm";
+                    
+                    let defaultOpt = document.createElement('option');
+                    defaultOpt.value = "";
+                    defaultOpt.innerText = "-- seleziona --";
+                    select.appendChild(defaultOpt);
+
+                    // Shuffle options
+                    const opts = [...item.options].sort(() => Math.random() - 0.5);
+                    opts.forEach(o => {
+                        let opt = document.createElement('option');
+                        opt.value = o;
+                        opt.innerText = o;
+                        select.appendChild(opt);
+                    });
+                    container.appendChild(select);
+                } else if (item.type === 'input') {
+                    const input = document.createElement('input');
+                    input.type = "text";
+                    input.id = item.id;
+                    input.dataset.answer = item.answer;
+                    input.placeholder = "........";
+                    input.className = "border border-slate-300 focus:border-blue-500 text-blue-700 text-sm rounded-md px-2 py-1 mx-1 w-28 text-center font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-200";
+                    container.appendChild(input);
+                } else if (item.type === 'hint_input') {
+                    const wrapper = document.createElement('span');
+                    wrapper.className = "inline-flex items-center mx-1";
+                    
+                    const hintSpan = document.createElement('span');
+                    hintSpan.className = "bg-slate-200 text-slate-700 text-xs font-bold px-2 py-1.5 rounded-l-md border border-r-0 border-slate-300";
+                    hintSpan.innerText = item.hint;
+
+                    const input = document.createElement('input');
+                    input.type = "text";
+                    input.id = item.id;
+                    input.dataset.answer = item.answer;
+                    input.className = "border border-slate-300 focus:border-blue-500 text-blue-700 text-sm rounded-r-md px-2 py-1 w-24 text-left font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-200";
+
+                    wrapper.appendChild(hintSpan);
+                    wrapper.appendChild(input);
+                    container.appendChild(wrapper);
+                }
+            });
+
+            // Re-initialize Lucide Icons
+            lucide.createIcons();
+        }
+
+        // Reset Exercise Inputs
+        function resetExercise() {
+            loadExercise();
+        }
+
+        // Verify Answers Logic
+        function checkAnswers() {
+            const data = exercises[currentType];
+            let total = 0;
+            let correct = 0;
+
+            data.template.forEach(item => {
+                if (item.type !== 'text') {
+                    total++;
+                    const elem = document.getElementById(item.id);
+                    const userVal = elem.value.trim().toLowerCase();
+                    const expected = elem.dataset.answer.toLowerCase();
+
+                    // Remove existing styling classes
+                    elem.classList.remove('border-emerald-500', 'bg-emerald-50', 'border-rose-500', 'bg-rose-50', 'text-emerald-700', 'text-rose-700');
+
+                    if (userVal === expected) {
+                        correct++;
+                        elem.classList.add('border-emerald-500', 'bg-emerald-50', 'text-emerald-700');
+                    } else {
+                        elem.classList.add('border-rose-500', 'bg-rose-50', 'text-rose-700');
+                    }
+                }
+            });
+
+            // Feedback Box Display
+            const feedbackBox = document.getElementById('feedback-box');
+            const feedbackIcon = document.getElementById('feedback-icon');
+            const feedbackTitle = document.getElementById('feedback-title');
+            const feedbackDetail = document.getElementById('feedback-detail');
+
+            feedbackBox.classList.remove('hidden', 'bg-emerald-50', 'border-emerald-200', 'bg-amber-50', 'border-amber-200', 'bg-rose-50', 'border-rose-200');
+
+            if (correct === total) {
+                feedbackBox.classList.add('bg-emerald-50', 'border-emerald-200');
+                feedbackIcon.innerHTML = `<i data-lucide="check-circle" class="w-6 h-6 text-emerald-600"></i>`;
+                feedbackTitle.className = "font-bold text-lg text-emerald-900";
+                feedbackTitle.innerText = "Eccellente! Tutto corretto.";
+                feedbackDetail.innerText = `Hai completato l'esercizio ottenendo il punteggio massimo: ${correct} su ${total}.`;
+            } else if (correct > 0) {
+                feedbackBox.classList.add('bg-amber-50', 'border-amber-200');
+                feedbackIcon.innerHTML = `<i data-lucide="alert-circle" class="w-6 h-6 text-amber-600"></i>`;
+                feedbackTitle.className = "font-bold text-lg text-amber-900";
+                feedbackTitle.innerText = "Buon tentativo!";
+                feedbackDetail.innerText = `Hai risposto correttamente a ${correct} su ${total} parole. Rivedi i campi evidenziati in rosso.`;
+            } else {
+                feedbackBox.classList.add('bg-rose-50', 'border-rose-200');
+                feedbackIcon.innerHTML = `<i data-lucide="x-circle" class="w-6 h-6 text-rose-600"></i>`;
+                feedbackTitle.className = "font-bold text-lg text-rose-900";
+                feedbackTitle.innerText = "Riprova!";
+                feedbackDetail.innerText = `Nessuna risposta corretta. Leggi bene il contesto del testo o gli indizi fornite.`;
+            }
+
+            lucide.createIcons();
+        }
+
+        // Initialize icons on first load
+        window.onload = function() {
+            lucide.createIcons();
+        };
+    </script>
+</body>
+</html>
